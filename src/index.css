@@ -3,12 +3,19 @@
 @tailwind utilities; 
 
 :root {
-    font-family: 'Roboto';
-    line-height: 1.5;
-    font-weight: 400;
-    font-size: 62.5%;
-  }
+  font-family: 'Roboto';
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 62.5%;
+}
   
-  body {
-    font-size: 1.6rem;
-  }
+body {
+  font-size: 1.6rem;
+}
+
+#article__home {
+  background-image: linear-gradient(180deg, #232d5fab 0, #091d589c 50%, #001025ab 100%), url('../src/assets/player.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

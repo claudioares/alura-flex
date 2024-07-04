@@ -15,7 +15,7 @@ export default {
         'frontend':'#6BD1FF',
         'erro':'#E53935',
         'backend':'#00C86F',
-        'inovgestao':'#00C86F'
+        'inovgestao':'#FFBA05'
       },
       boxShadow: {
         'shadow-button':'rgb(34, 113, 209) 0px 0px 10px 5px inset',
