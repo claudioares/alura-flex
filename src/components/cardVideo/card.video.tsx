@@ -5,7 +5,7 @@ type propsSectionType = {
     img: string
 }
 
-export function Card ({img}:propsSectionType) {
+export function CardVideo ({img}:propsSectionType) {
     return(
         <div className={`
             flex flex-col gap-14
@@ -14,13 +14,13 @@ export function Card ({img}:propsSectionType) {
                 <div className="w-full h-full">
                     <img src={img} alt="" className="w-full h-full object-cover"/>
                 </div>
-                <footer className="w-full h-[5.9rem] bg-black text-white flex items-center justify-between px-8">
-                    <div className="flex items-center justify-center gap-4">
-                        <img src={iconDel} alt="Icone de lixeira" />
+                <footer className="w-full h-[5.9rem] bg-black text-white flex items-center justify-between px-8 py-4">
+                    <div className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-85">
+                        <img src={iconDel} alt="Icone de lixeira" className='w-6'/>
                         <p>Deletar</p>
                     </div>
-                    <div className="flex items-center justify-center gap-4">
-                        <img src={iconEdit} alt="Icone de edição" />
+                    <div className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-85">
+                        <img src={iconEdit} alt="Icone de edição" className='w-6'/>
                         <p>Deletar</p>
                     </div>
                 </footer>

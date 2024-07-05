@@ -3,7 +3,7 @@ import player from '../../assets/player.svg';
 export function Article () {
     return(
         <>
-            <article id="article__home" className="w-full h-[83.2rem] flex items-center justify-centera px-[4.3rem]">
+            <article id="article__home" className="w-full h-[83.2rem] flex gap-14 items-center justify-centera px-[4.3rem]">
                 <section className="w-[50%] flex flex-col gap-[4rem]">
                     <button className='w-[29.6rem] h-[9.2rem] bg-frontend font-extrabold text-5xl text-white'>FRONT END</button>
                     <div  className='text-white flex flex-col gap-[0.9rem]'>

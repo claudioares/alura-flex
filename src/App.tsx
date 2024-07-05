@@ -1,6 +1,6 @@
 import { Article } from "./components/article/article";
-import { ButtonSection } from "./components/card/button/button";
-import { Card } from "./components/card/card";
+import { SectionStack } from "./components/card/section.stack";
+import { Container } from "./components/container/container";
 import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
 import { imagesBack, imagesFront, imagesMobile } from "./utils/imagens";
@@ -9,43 +9,14 @@ import { imagesBack, imagesFront, imagesMobile } from "./utils/imagens";
 export function App() {
   return (
     <>
-      <div className="w-full h-screen">
+      <div className="w-full min-h-screen bg-darkgray">
         <Header />
         <Article />
-
-        <div className="w-full h-auto py-8 px-4 bg-darkgray flex flex-col gap-8 items-center justify-center">
-          <div className="w-full h-auto flex justify-start items-center px-28">
-            <ButtonSection title={"Front end"} bg={"bg-frontend"} />
-          </div>
-          <div className="flex gap-8 items-center justify-center">
-            {imagesFront.map((img, index)=>(
-              <Card img={img} key={index}/>
-            ))}
-          </div>
-        </div>
-
-        <div className="w-full h-auto py-8 px-4 bg-darkgray flex flex-col gap-8 items-center justify-center">
-          <div className="w-full h-auto flex justify-start items-center px-28">
-            <ButtonSection title={"Back end"} bg={"bg-backend"} />
-          </div>
-          <div className="flex gap-8 items-center justify-center">
-            {imagesBack.map((img, index)=>(
-              <Card img={img} key={index}/>
-            ))}
-          </div>
-        </div>
-
-        
-        <div className="w-full h-auto py-8 px-4 bg-darkgray flex flex-col gap-8 items-center justify-center">
-          <div className="w-full h-auto flex justify-start items-center px-28">
-            <ButtonSection title={"Mobile"} bg={"bg-inovgestao"} />
-          </div>
-          <div className="flex gap-8 items-center justify-center">
-            {imagesMobile.map((img, index)=>(
-              <Card img={img} key={index}/>
-            ))}
-          </div>
-        </div>
+        <Container>
+          <SectionStack arrImagens={imagesFront} title={"Front End"} bgButton={"bg-frontend"} />
+          <SectionStack arrImagens={imagesBack} title={"Back End"} bgButton={"bg-backend"} />
+          <SectionStack arrImagens={imagesMobile} title={"Mobile"} bgButton={"bg-inovgestao"} />
+        </Container>
         <Footer />
       </div>
     </>
