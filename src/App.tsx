@@ -3,6 +3,7 @@ import { SectionStack } from "./components/card/section.stack";
 import { Container } from "./components/container/container";
 import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
+import { ModalCardEdit } from "./components/modal/modalcardedit";
 import { imagesBack, imagesFront, imagesMobile } from "./utils/imagens";
 
 
@@ -18,6 +19,8 @@ export function App() {
           <SectionStack arrImagens={imagesMobile} title={"Mobile"} bgButton={"bg-inovgestao"} />
         </Container>
         <Footer />
+
+        <ModalCardEdit />
       </div>
     </>
   )

@@ -17,13 +17,10 @@ export function InputSelect ({title, inputW}:PropsInputType) {
                         ${inputW} border border-darkgray rounded-[1rem] text-darkgray py-[1.6rem] px-[0.8rem]
                     `}
                 >
-                    <option value="" >Selecione uma Especialidade</option>
-                    <option value="clinico_geral">Clínico Geral</option>
-                    <option value="psicologia">Psicologia</option>
-                    <option value="endocrinologia">Endocrinologia</option>
-                    <option value="ginecologia">Ginecologia</option>
-                    <option value="urologia">Urologia</option>
-                    <option value="dermatologia">Dermatologia</option>
+                    <option value="" >Selecione uma categoria</option>
+                    <option value="frontend">Front End</option>
+                    <option value="backend">Back End</option>
+                    <option value="mobile">Mobile</option>
                 </select>
             </div>
         </>
