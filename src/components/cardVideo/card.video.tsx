@@ -1,11 +1,15 @@
+import { useContext } from 'react';
 import iconDel from '../../assets/icons/del.svg';
 import iconEdit from '../../assets/icons/edit.svg';
+import { ContextApi } from '../../contextApi/contextApi';
 
 type propsSectionType = {
     img: string
 }
 
 export function CardVideo ({img}:propsSectionType) {
+  const {setModal} = useContext(ContextApi)
+
     return(
         <div className={`
             flex flex-col gap-14
@@ -19,7 +23,7 @@ export function CardVideo ({img}:propsSectionType) {
                         <img src={iconDel} alt="Icone de lixeira" className='w-6'/>
                         <p>Deletar</p>
                     </div>
-                    <div className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-85">
+                    <div onClick={()=>setModal(true)} className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-85">
                         <img src={iconEdit} alt="Icone de edição" className='w-6'/>
                         <p>Editar</p>
                     </div>

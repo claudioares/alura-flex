@@ -1,3 +1,4 @@
+import { useContext, useState } from "react";
 import { Article } from "./components/article/article";
 import { SectionStack } from "./components/card/section.stack";
 import { Container } from "./components/container/container";
@@ -5,9 +6,11 @@ import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
 import { ModalCardEdit } from "./components/modal/modalcardedit";
 import { imagesBack, imagesFront, imagesMobile } from "./utils/imagens";
+import { ContextApi } from "./contextApi/contextApi";
 
 
 export function App() {
+  const {modal} = useContext(ContextApi)
   return (
     <>
       <div className="w-full min-h-screen bg-darkgray">
@@ -20,7 +23,7 @@ export function App() {
         </Container>
         <Footer />
 
-        <ModalCardEdit />
+        {modal && <ModalCardEdit />}
       </div>
     </>
   )
