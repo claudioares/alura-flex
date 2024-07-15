@@ -8,7 +8,7 @@ export function Button ({title, stateButton=false}:propsButtonType) {
         <>
             <button className={`
                 w-[18rem] h-[5.4rem] rounded-xl border 
-                ${stateButton ? `border-blue text-blue shadow-shadow-button` : `border text-white`}
+                ${stateButton ? `border-blue text-blue shadow-shadow-button` : `border text-white hover:border-blue hover:text-blue hover:shadow-shadow-button`}
             `}>
                 {title}
             </button>

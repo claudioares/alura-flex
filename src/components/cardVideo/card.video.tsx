@@ -21,7 +21,7 @@ export function CardVideo ({img}:propsSectionType) {
                     </div>
                     <div className="flex items-center justify-center gap-4 cursor-pointer hover:opacity-85">
                         <img src={iconEdit} alt="Icone de edição" className='w-6'/>
-                        <p>Deletar</p>
+                        <p>Editar</p>
                     </div>
                 </footer>
             </section>
