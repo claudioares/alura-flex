@@ -1,7 +1,12 @@
 import logo from '../../assets/logo.svg'
 import { Button } from '../button/button'
 
-export function Header () {
+
+type PropsHeaderType = {
+    callPrps:string;
+}
+
+export function Header ({callPrps}:PropsHeaderType) {
     return(
         <>
             <header className={`
@@ -10,8 +15,8 @@ export function Header () {
             `}>
                 <img src={logo} alt="Logo da alura flix" className='h-[4rem]'/>
                 <div className='w-full flex items-center justify-end gap-[2.5rem]'>
-                    <Button stateButton={true} title={'Home'} />
-                    <Button title={'Novo video'} />
+                    <Button route={callPrps} stateButton={callPrps==='/' && true} title={'Home'} />
+                    <Button route={callPrps} stateButton={callPrps==='/videonew' && true} title={'Novo video'} />
                 </div>
             </header>
         </>

@@ -10,7 +10,7 @@ export function App() {
   return (
     <>
       <div className="w-full min-h-screen bg-darkgray">
-        <Header />
+        <Header callPrps="/"/>
         <Article />
         <Container>
           <SectionStack arrImagens={imagesFront} title={"Front End"} bgButton={"bg-frontend"} />
