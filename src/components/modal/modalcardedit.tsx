@@ -7,7 +7,7 @@ import { ContextApi } from "../../contextApi/contextApi";
 import exitIcon from '../../assets/icons/exit.svg';
 
 export function ModalCardEdit () {
-  const {setModal} = useContext(ContextApi)
+  const {setModal, modalInfor} = useContext(ContextApi)
 
     return(
         <>
@@ -26,11 +26,40 @@ export function ModalCardEdit () {
                     </div>
                     <div className="flex flex-col justify-center items-center w-full max-h-auto p-24 gap-[4.3rem]">
                         <h1 className="text-[6rem] font-black text-blue">EDITAR CARD:</h1>
-                        <Input inputW="w-full" title={"Titulo"} placeholder={"Adicone um titulo"} />
-                        <InputSelect title={"Categoria"} />
-                        <Input inputW="w-full" title={"Imagem"} placeholder={"Adicione um link de imagem"} />
-                        <Input inputW="w-full" title={"Video"} placeholder={"Adicione um link de video"} />
-                        <Textarea textareaH="11.2rem" inputW="w-full" title={"Descrição"} placeholder={"Adicione uma descrição"} />
+                        <Input 
+                            inputW="w-full" 
+                            title={"Titulo"} 
+                            placeholder={"Adicone um titulo"} 
+                            value={modalInfor.titulo} 
+                            func={undefined} 
+                        />
+                        <InputSelect 
+                            title={"Categoria"} 
+                            value={modalInfor.categorie} 
+                            func={undefined} 
+                        />
+                        <Input 
+                            inputW="w-full" 
+                            title={"Imagem"} 
+                            placeholder={"Adicione um link de imagem"} 
+                            value={modalInfor.link_imagem} 
+                            func={undefined} 
+                        />
+                        <Input 
+                            inputW="w-full" 
+                            title={"Video"} 
+                            placeholder={"Adicione um link de video"} 
+                            value={modalInfor.link_video} 
+                            func={undefined} 
+                        />
+                        <Textarea 
+                            textareaH="11.2rem" 
+                            inputW="w-full" 
+                            title={"Descrição"} 
+                            placeholder={"Adicione uma descrição"} 
+                            value={modalInfor.description} 
+                            func={undefined} 
+                        />
 
                         <div className="w-full h-auto flex gap-[21rem]">
                             <Button stateButton={true} title={"GUARDAR"} route={"/"} />

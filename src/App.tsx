@@ -1,25 +1,88 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Article } from "./components/article/article";
-import { SectionStack } from "./components/card/section.stack";
+import { SectionStack } from "./components/sectionstack/section.stack";
 import { Container } from "./components/container/container";
 import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
 import { ModalCardEdit } from "./components/modal/modalcardedit";
-import { imagesBack, imagesFront, imagesMobile } from "./utils/imagens";
 import { ContextApi } from "./contextApi/contextApi";
 
 
+interface IDataBase {
+  id: string,
+  link_imagem: string,
+  link_video: string,
+  titulo: string,
+  categorie: string,
+  description: string
+}
+
 export function App() {
-  const {modal} = useContext(ContextApi)
+  const { modal } = useContext(ContextApi);
+  const [dataFront, setDataFront] = useState<IDataBase[]>([]);
+  const [dataBack, setDataBack] = useState<IDataBase[]>([]);
+  const [dataMobile, setDataMobile] = useState<IDataBase[]>([]);
+
+
+
+  useEffect(() => {
+    fetch('http://localhost:3333/frontend')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setDataFront(data);
+      });
+
+    fetch('http://localhost:3333/backend')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setDataBack(data);
+      });
+
+      fetch('http://localhost:3333/mobile')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setDataMobile(data);
+      });
+
+  }, []);
+  
+  
   return (
     <>
       <div className="w-full min-h-screen bg-darkgray">
         <Header callPrps="/"/>
         <Article />
         <Container>
-          <SectionStack arrImagens={imagesFront} title={"Front End"} bgButton={"bg-frontend"} />
-          <SectionStack arrImagens={imagesBack} title={"Back End"} bgButton={"bg-backend"} />
-          <SectionStack arrImagens={imagesMobile} title={"Mobile"} bgButton={"bg-inovgestao"} />
+          <SectionStack 
+            imageData={dataFront} 
+            title={"Front End"} 
+            bgButton={"bg-frontend"} 
+          />
+          <SectionStack 
+            imageData={dataBack} 
+            title={"Back End"} 
+            bgButton={"bg-backend"} 
+          />
+          <SectionStack 
+            imageData={dataMobile} 
+            title={"Mobile"} 
+            bgButton={"bg-inovgestao"} 
+          />
         </Container>
         <Footer />
 

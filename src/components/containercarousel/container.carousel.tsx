@@ -1,10 +1,10 @@
-import { ReactNode, useState, Children } from "react"
+import { ReactNode, Children } from "react"
 
 type propsCarouselVideoType = {
     children: ReactNode
 }
 
-export function CarouselVideos ({ children }:propsCarouselVideoType) {
+export function ContainerCarousel ({ children }:propsCarouselVideoType) {
 
 
     return (
