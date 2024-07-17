@@ -26,7 +26,7 @@ export function App() {
 
 
   useEffect(() => {
-    fetch('http://localhost:3333/frontend')
+    fetch('https://api-aluraflix.onrender.com/frontend')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -37,7 +37,7 @@ export function App() {
         setDataFront(data);
       });
 
-    fetch('http://localhost:3333/backend')
+    fetch('https://api-aluraflix.onrender.com/backend')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -48,7 +48,7 @@ export function App() {
         setDataBack(data);
       });
 
-      fetch('http://localhost:3333/mobile')
+      fetch('https://api-aluraflix.onrender.com/mobile')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const apiMongoDB = axios.create({
-    baseURL: 'http://localhost:3333',
+    baseURL: 'https://api-aluraflix.onrender.com',
     headers: {
         'Content-Type': 'application/json'
     }
