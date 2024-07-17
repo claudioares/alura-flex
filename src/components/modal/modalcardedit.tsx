@@ -1,13 +1,93 @@
-import { useContext } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { Button } from "../button/button";
 import { Input } from "../input/input";
 import { InputSelect } from "../inputselect/input.select";
 import { Textarea } from "../textarea/textarea";
 import { ContextApi } from "../../contextApi/contextApi";
 import exitIcon from '../../assets/icons/exit.svg';
+import { apiMongoDB } from "../../service/api";
 
 export function ModalCardEdit () {
-  const {setModal, modalInfor} = useContext(ContextApi)
+  const {
+    setModal, modalInfor
+} = useContext(ContextApi);
+
+// informações dos formularios
+const [title, setTitle] = useState<string>(modalInfor.titulo);
+const [categorie, setCategorie] = useState<string>(modalInfor.categorie);
+const [image, setImage] = useState<string>(modalInfor.link_imagem);
+const [video, setVideo] = useState<string>(modalInfor.link_video);
+const [description, setDescription] = useState<string>(modalInfor.description);
+
+function handleCleanForm () {
+    setTitle('');
+    setCategorie('');
+    setImage('');
+    setVideo('');
+    setDescription('')
+}
+
+async function handleSubmit (e:FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if(!modalInfor.title){
+        console.log("Titulo nescesario");
+        return
+    }
+    if(!modalInfor.categorie){
+        console.log("categoria nescesario");
+        return;
+    }
+    if(!modalInfor.link_imagem){
+        console.log("imagem nescesario");
+        return;
+    }
+    if(!modalInfor.link_video){
+        console.log("video nescesario");
+        return;
+    }
+
+    
+    if(modalInfor.categorie === 'frontend'){
+        await apiMongoDB.post('/frontend', {
+            title,
+            link_video:video,
+            link_image:image,
+            categorie,
+            description,
+        });
+        handleCleanForm();
+
+        return;
+    };
+
+    if(modalInfor.categorie === 'backend'){
+        await apiMongoDB.post('/backend', {
+            title,
+            link_video:video,
+            link_image:image,
+            categorie,
+            description,
+        });
+        handleCleanForm();
+
+        return;
+    };
+
+    if(modalInfor.categorie === 'mobile'){
+        await apiMongoDB.post('/mobile', {
+            title,
+            link_video:video,
+            link_image:image,
+            categorie,
+            description,
+        });
+        handleCleanForm();
+
+        return;
+    };
+
+}
 
     return(
         <>
@@ -15,7 +95,7 @@ export function ModalCardEdit () {
                 w-full min-h-screen fixed top-0 left-0 bottom-0 right-0 bg-[#03122f81] flex items-center justify-center overflow-y-auto pt-96
                 2xl:p-0 
             `}>
-                <form action="" className={`
+                <form onSubmit={handleSubmit} action="" className={`
                     relative
                     flex flex-col justify-center items-center 
                     gap-[4.3rem] w-auto h-auto bg-[#031230]
@@ -30,40 +110,40 @@ export function ModalCardEdit () {
                             inputW="w-full" 
                             title={"Titulo"} 
                             placeholder={"Adicone um titulo"} 
-                            value={modalInfor.titulo} 
-                            func={undefined} 
+                            value={title} 
+                            func={setTitle} 
                         />
                         <InputSelect 
                             title={"Categoria"} 
-                            value={modalInfor.categorie} 
-                            func={undefined} 
+                            value={categorie} 
+                            func={setCategorie} 
                         />
                         <Input 
                             inputW="w-full" 
                             title={"Imagem"} 
                             placeholder={"Adicione um link de imagem"} 
-                            value={modalInfor.link_imagem} 
-                            func={undefined} 
+                            value={image} 
+                            func={setImage} 
                         />
                         <Input 
                             inputW="w-full" 
                             title={"Video"} 
                             placeholder={"Adicione um link de video"} 
-                            value={modalInfor.link_video} 
-                            func={undefined} 
+                            value={video} 
+                            func={setVideo} 
                         />
                         <Textarea 
                             textareaH="11.2rem" 
                             inputW="w-full" 
                             title={"Descrição"} 
                             placeholder={"Adicione uma descrição"} 
-                            value={modalInfor.description} 
-                            func={undefined} 
+                            value={description} 
+                            func={setDescription} 
                         />
 
                         <div className="w-full h-auto flex gap-[21rem]">
-                            <Button stateButton={true} title={"GUARDAR"} route={"/"} />
-                            <Button title={"LIMPAR"} route={""} />
+                            <Button stateButton={true} type="submit" title={"GUARDAR"} route={"/"} />
+                            <Button title={"LIMPAR"} func={handleCleanForm} route={""} />
                         </div>
                     </div>
                 </form>

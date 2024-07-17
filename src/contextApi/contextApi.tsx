@@ -1,5 +1,5 @@
 "use client"
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useLayoutEffect, useState } from "react";
 import { apiMongoDB } from "../service/api";
 
 
@@ -16,6 +16,12 @@ interface IDataBase {
     description: string
   }
 
+interface IDataVideos {
+    frontend: IDataBase[],
+    backend: IDataBase[],
+    mobile: IDataBase[]
+}
+
 export const ContextApi = createContext<ContextProps>({} as ContextProps);
 
 
@@ -24,13 +30,14 @@ export default function ContextProvider ({children}: {children: ReactNode}) {
    
     const [modal, setModal] = useState<boolean>(false);
     const [modalInfor, setModalInfor]=useState<IDataBase[]>([])
-    const [dataVideos, setDataVideos ] = useState({
+
+    const [ dataVideos, setDataVideos ] = useState<IDataVideos>({
         frontend: [],
         backend: [],
         mobile: []
     });
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         async function handleLoadingVideos () {
             const frontend = await apiMongoDB.get("/frontend");
             const backend = await apiMongoDB.get("/backend");
@@ -45,12 +52,24 @@ export default function ContextProvider ({children}: {children: ReactNode}) {
 
         handleLoadingVideos();
     }, [])
+
+    // informações dos formularios
+    const [title, setTitle] = useState<string>("");
+    const [categorie, setCategorie] = useState<string>("");
+    const [image, setImage] = useState<string>("");
+    const [video, setVideo] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
+   
   
 
     return(
         <ContextApi.Provider value={{
-            modal, setModal, dataVideos,
-            modalInfor, setModalInfor
+            modal, setModal,
+            modalInfor, setModalInfor,
+            title, setTitle, categorie, setCategorie,
+            image, setImage, video, setVideo, description, setDescription,
+
+            dataVideos, setDataVideos
         }}>
             {children}
         </ContextApi.Provider>

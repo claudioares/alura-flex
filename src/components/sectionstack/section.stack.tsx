@@ -12,12 +12,12 @@ interface IDataBase {
   }
 
 type propsCardVideosType = {
-    imageData: IDataBase[],
+    dataBase: IDataBase[],
     title: string,
     bgButton: string,
 }
 
-export function SectionStack ({imageData, title, bgButton}:propsCardVideosType) {
+export function SectionStack ({dataBase, title, bgButton}:propsCardVideosType) {
     return(
         <>
             <div className="w-full h-auto py-16 flex flex-col gap-4">
@@ -26,7 +26,7 @@ export function SectionStack ({imageData, title, bgButton}:propsCardVideosType) 
                         <ButtonSection title={title} bg={bgButton} />
                     </div>
                     <ContainerCarousel>
-                        {imageData.map((data, index:number)=>(
+                        {dataBase.map((data, index:number)=>(
                             <CardVideo img={data.link_imagem} key={index} data={data}/>
                         ))}
                     </ContainerCarousel>

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext } from "react";
 import { Button } from "./components/button/button";
 import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
@@ -6,13 +6,15 @@ import { Input } from "./components/input/input";
 import { InputSelect } from "./components/inputselect/input.select";
 import { Textarea } from "./components/textarea/textarea";
 import { apiMongoDB } from "./service/api";
+import { ContextApi } from "./contextApi/contextApi";
 
 export function VideoNew () {
-    const [title, setTitle] = useState<string>("");
-    const [categorie, setCategorie] = useState<string>("");
-    const [image, setImage] = useState<string>("");
-    const [video, setVideo] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
+
+    const {
+        // armazena os inputs
+        title, setTitle, categorie, setCategorie,
+        image, setImage, video, setVideo, description, setDescription,
+    } = useContext(ContextApi)
 
 
     function handleCleanForm () {
